@@ -1,0 +1,25 @@
+# Test Configuration
+
+spring:
+  application:
+    name: armada-api-client-test
+
+armada:
+  api:
+    base-url: http://localhost:8080
+    endpoints:
+      auth:
+        token: /v1/auth/token
+      organizations:
+        list: /v1/orgs
+    credentials:
+      api-key-id: test-key-id
+      api-key: test-key
+    token:
+      refresh-cron: "0 */5 * * * *"
+      expiry-threshold-percent: 50
+
+logging:
+  level:
+    ai.armada.client: DEBUG
+    org.springframework.web.reactive.function.client: DEBUG
