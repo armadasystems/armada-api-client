@@ -29,7 +29,7 @@ export ARMADA_API_KEY_ID=your-api-key-id
 export ARMADA_API_KEY=your-api-key
 ```
 
-Or use the `.env.example` file as a template.
+Or use the `.env.armada` file as a template.
 
 ### application.yml
 
