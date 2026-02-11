@@ -1,0 +1,48 @@
+# Application Configuration
+server:
+  port: 8080
+
+spring:
+  application:
+    name: armada-api-client
+      
+# Armada API Configuration
+armada:
+  api:
+    base-url: ${ARMADA_API_BASE_URL:https://api.dev.armada.ai}
+    endpoints:
+      auth:
+        token: /v1/auth/token
+      organizations:
+        list: /v1/orgs
+        data-pools: /v1/organizations/{orgId}/data-pools
+        data-pool-by-id: /v1/organizations/{orgId}/data-pools/{dataPoolId}
+        data-pool-usage: /v1/organizations/{orgId}/data-pools/{dataPoolId}/data-usage
+        data-pool-settings: /v1/organizations/{orgId}/data-pools/{dataPoolId}/settings
+        service-lines: /v1/organizations/{orgId}/data-pools/{dataPoolId}/service-lines
+        service-line-by-id: /v1/organizations/{orgId}/data-pools/{dataPoolId}/service-lines/{serviceLineId}
+        service-line-usage: /v1/organizations/{orgId}/data-pools/{dataPoolId}/service-lines/{serviceLineId}/data-usage
+        service-line-settings: /v1/organizations/{orgId}/data-pools/{dataPoolId}/service-lines/{serviceLineId}/settings
+        all-service-lines-usage: /v1/organizations/{orgId}/data-pools/{dataPoolId}/service-lines/data-usage
+        all-service-lines-settings: /v1/organizations/{orgId}/data-pools/{dataPoolId}/service-lines/settings
+    credentials:
+      api-key-id: ${ARMADA_API_KEY_ID}
+      api-key: ${ARMADA_API_KEY}
+    tokenConfig:
+      refresh-rate-ms: 300000 # Every 5 minutes (5 * 60 * 1000 ms)
+      expiry-threshold-percent: 50 # Refresh when 50% of token lifetime has passed
+
+# Logging Configuration
+logging:
+  level:
+    ai.armada.client: DEBUG
+    org.springframework.web.reactive.function.client: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# WebClient Configuration
+webclient:
+  connection-timeout: 5000
+  read-timeout: 5000
+  max-memory-size: 10485760 # 10MB
