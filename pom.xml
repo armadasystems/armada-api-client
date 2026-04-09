@@ -35,6 +35,8 @@
 		<spring-framework.version>6.2.11</spring-framework.version>
 		<logback.version>1.5.25</logback.version>
 		<reactor-netty.version>1.2.8</reactor-netty.version>
+		<hibernate-validator.version>8.0.3.Final</hibernate-validator.version>
+		<log4j2.version>2.25.4</log4j2.version>
 	</properties>
 
 	<dependencyManagement>
