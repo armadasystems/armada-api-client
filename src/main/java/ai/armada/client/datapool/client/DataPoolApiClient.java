@@ -154,12 +154,12 @@ public class DataPoolApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            java.net.URI uri = UriComponentsBuilder.fromUriString(
+            String uri = UriComponentsBuilder.fromUriString(
                     properties.getEndpoints().getOrganizations().getDataPoolUsage())
                     .queryParam("billingCycles", billingCycles)
                     .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId))
                     .encode()
-                    .toUri();
+                    .toUriString();
 
             DataPoolUsageApiResponse response = webClient.get()
                     .uri(uri)

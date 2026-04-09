@@ -154,12 +154,12 @@ public class ServiceLineApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            java.net.URI uri = UriComponentsBuilder.fromUriString(
+            String uri = UriComponentsBuilder.fromUriString(
                     properties.getEndpoints().getOrganizations().getServiceLineUsage())
                     .queryParam("billingCycles", billingCycles)
                     .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId, "serviceLineId", serviceLineId))
                     .encode()
-                    .toUri();
+                    .toUriString();
 
             ServiceLineSingleUsageApiResponse response = webClient.get()
                     .uri(uri)
@@ -211,12 +211,12 @@ public class ServiceLineApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            java.net.URI uri = UriComponentsBuilder.fromUriString(
+            String uri = UriComponentsBuilder.fromUriString(
                     properties.getEndpoints().getOrganizations().getAllServiceLinesUsage())
                     .queryParam("billingCycles", billingCycles)
                     .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId))
                     .encode()
-                    .toUri();
+                    .toUriString();
 
             ServiceLinesUsageApiResponse response = webClient.get()
                     .uri(uri)
