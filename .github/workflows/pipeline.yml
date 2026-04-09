@@ -35,3 +35,13 @@ jobs:
         with:
           name: armada-api-client-coverage
           path: target/site/jacoco/
+
+      - name: OWASP Dependency Check
+        run: mvn -B org.owasp:dependency-check-maven:12.1.0:check --no-transfer-progress -DfailBuildOnCVSS=7 -DnvdApiKey=7aed8a61-e686-47b1-9ced-a4d4d7df5582
+
+      - name: Upload OWASP report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-check-report
+          path: target/dependency-check-report.html
