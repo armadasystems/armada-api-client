@@ -10,7 +10,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import java.util.List;
+import java.util.Map;
 
 @Component
 @Slf4j
@@ -34,9 +37,11 @@ public class ServiceLineApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            String uri = properties.getEndpoints().getOrganizations().getServiceLines()
-                    .replace("{orgId}", orgId)
-                    .replace("{dataPoolId}", dataPoolId);
+            String uri = UriComponentsBuilder.fromUriString(
+                    properties.getEndpoints().getOrganizations().getServiceLines())
+                    .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId))
+                    .encode()
+                    .toUriString();
 
             ServiceLineApiResponse response = webClient.get()
                     .uri(uri)
@@ -93,10 +98,11 @@ public class ServiceLineApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            String uri = properties.getEndpoints().getOrganizations().getServiceLineById()
-                    .replace("{orgId}", orgId)
-                    .replace("{dataPoolId}", dataPoolId)
-                    .replace("{serviceLineId}", serviceLineId);
+            String uri = UriComponentsBuilder.fromUriString(
+                    properties.getEndpoints().getOrganizations().getServiceLineById())
+                    .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId, "serviceLineId", serviceLineId))
+                    .encode()
+                    .toUriString();
 
             ServiceLineSingleApiResponse response = webClient.get()
                     .uri(uri)
@@ -148,16 +154,15 @@ public class ServiceLineApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            String uri = properties.getEndpoints().getOrganizations().getServiceLineUsage()
-                    .replace("{orgId}", orgId)
-                    .replace("{dataPoolId}", dataPoolId)
-                    .replace("{serviceLineId}", serviceLineId);
+            String uri = UriComponentsBuilder.fromUriString(
+                    properties.getEndpoints().getOrganizations().getServiceLineUsage())
+                    .queryParam("billingCycles", billingCycles)
+                    .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId, "serviceLineId", serviceLineId))
+                    .encode()
+                    .toUriString();
 
             ServiceLineSingleUsageApiResponse response = webClient.get()
-                    .uri(uriBuilder -> uriBuilder
-                            .path(uri)
-                            .queryParam("billingCycles", billingCycles)
-                            .build())
+                    .uri(uri)
                     .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
                     .retrieve()
                     .bodyToMono(ServiceLineSingleUsageApiResponse.class)
@@ -206,15 +211,15 @@ public class ServiceLineApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            String uri = properties.getEndpoints().getOrganizations().getAllServiceLinesUsage()
-                    .replace("{orgId}", orgId)
-                    .replace("{dataPoolId}", dataPoolId);
+            String uri = UriComponentsBuilder.fromUriString(
+                    properties.getEndpoints().getOrganizations().getAllServiceLinesUsage())
+                    .queryParam("billingCycles", billingCycles)
+                    .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId))
+                    .encode()
+                    .toUriString();
 
             ServiceLinesUsageApiResponse response = webClient.get()
-                    .uri(uriBuilder -> uriBuilder
-                            .path(uri)
-                            .queryParam("billingCycles", billingCycles)
-                            .build())
+                    .uri(uri)
                     .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
                     .retrieve()
                     .bodyToMono(ServiceLinesUsageApiResponse.class)
@@ -318,9 +323,11 @@ public class ServiceLineApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            String uri = properties.getEndpoints().getOrganizations().getAllServiceLinesSettings()
-                    .replace("{orgId}", orgId)
-                    .replace("{dataPoolId}", dataPoolId);
+            String uri = UriComponentsBuilder.fromUriString(
+                    properties.getEndpoints().getOrganizations().getAllServiceLinesSettings())
+                    .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId))
+                    .encode()
+                    .toUriString();
 
             ServiceLineSettingsListApiResponse response = webClient.get()
                     .uri(uri)

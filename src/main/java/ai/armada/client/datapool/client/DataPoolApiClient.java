@@ -10,7 +10,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import java.util.List;
+import java.util.Map;
 
 @Component
 @Slf4j
@@ -34,8 +37,11 @@ public class DataPoolApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            String uri = properties.getEndpoints().getOrganizations().getDataPools()
-                    .replace("{orgId}", orgId);
+            String uri = UriComponentsBuilder.fromUriString(
+                    properties.getEndpoints().getOrganizations().getDataPools())
+                    .buildAndExpand(Map.of("orgId", orgId))
+                    .encode()
+                    .toUriString();
 
             DataPoolApiResponse response = webClient.get()
                     .uri(uri)
@@ -92,9 +98,11 @@ public class DataPoolApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            String uri = properties.getEndpoints().getOrganizations().getDataPoolById()
-                    .replace("{orgId}", orgId)
-                    .replace("{dataPoolId}", dataPoolId);
+            String uri = UriComponentsBuilder.fromUriString(
+                    properties.getEndpoints().getOrganizations().getDataPoolById())
+                    .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId))
+                    .encode()
+                    .toUriString();
 
             DataPoolSingleApiResponse response = webClient.get()
                     .uri(uri)
@@ -146,15 +154,15 @@ public class DataPoolApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            String uri = properties.getEndpoints().getOrganizations().getDataPoolUsage()
-                    .replace("{orgId}", orgId)
-                    .replace("{dataPoolId}", dataPoolId);
+            String uri = UriComponentsBuilder.fromUriString(
+                    properties.getEndpoints().getOrganizations().getDataPoolUsage())
+                    .queryParam("billingCycles", billingCycles)
+                    .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId))
+                    .encode()
+                    .toUriString();
 
             DataPoolUsageApiResponse response = webClient.get()
-                    .uri(uriBuilder -> uriBuilder
-                            .path(uri)
-                            .queryParam("billingCycles", billingCycles)
-                            .build())
+                    .uri(uri)
                     .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
                     .retrieve()
                     .bodyToMono(DataPoolUsageApiResponse.class)
@@ -203,9 +211,11 @@ public class DataPoolApiClient {
 
         try {
             String accessToken = tokenProvider.getAccessToken();
-            String uri = properties.getEndpoints().getOrganizations().getDataPoolSettings()
-                    .replace("{orgId}", orgId)
-                    .replace("{dataPoolId}", dataPoolId);
+            String uri = UriComponentsBuilder.fromUriString(
+                    properties.getEndpoints().getOrganizations().getDataPoolSettings())
+                    .buildAndExpand(Map.of("orgId", orgId, "dataPoolId", dataPoolId))
+                    .encode()
+                    .toUriString();
 
             DataPoolSettingsApiResponse response = webClient.get()
                     .uri(uri)

@@ -30,11 +30,13 @@
 		<java.version>17</java.version>
         <lombok.version>1.18.30</lombok.version>
 		<okhttp3.version>4.12.0</okhttp3.version>
-		<tomcat.version>10.1.47</tomcat.version>
-		<netty.version>4.1.129.Final</netty.version>
+		<tomcat.version>10.1.54</tomcat.version>
+		<netty.version>4.1.132.Final</netty.version>
 		<spring-framework.version>6.2.11</spring-framework.version>
 		<logback.version>1.5.25</logback.version>
 		<reactor-netty.version>1.2.8</reactor-netty.version>
+		<hibernate-validator.version>8.0.3.Final</hibernate-validator.version>
+		<log4j2.version>2.25.4</log4j2.version>
 	</properties>
 
 	<dependencyManagement>
