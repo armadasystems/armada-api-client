@@ -1,0 +1,5 @@
+{
+  "com.fasterxml.jackson.core:jackson-core": "2.21.1",
+  "org.springframework:spring-webflux": "7.0.6",
+  "org.springframework:spring-webmvc": "7.0.6"
+}
