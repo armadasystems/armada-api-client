@@ -16,6 +16,19 @@
     </suppress>
 
     <!--
+        GHSA-72hv-8253-57qq (MEDIUM) - jackson-core 2.18.3
+        Fix version 2.21.1 is not yet published to Maven Central.
+        Spring Boot 3.4.5 manages jackson-core at 2.18.3; no compatible patched version available.
+        Accepted risk: MEDIUM severity; revisit when 2.21.1 (or a backport) is available in Maven Central.
+    -->
+    <suppress>
+        <notes>GHSA-72hv-8253-57qq MEDIUM. Fix version 2.21.1 not yet published to Maven Central.
+        Spring Boot 3.4.5 manages jackson-core at 2.18.3. Accepted risk pending release.</notes>
+        <packageUrl regex="true">^pkg:maven/com\.fasterxml\.jackson\.core/jackson\-core@.*$</packageUrl>
+        <ghsa>GHSA-72hv-8253-57qq</ghsa>
+    </suppress>
+
+    <!--
         CVE-2026-22735 (LOW) - spring-webflux and spring-webmvc 6.2.x
         Fix requires Spring Framework 7.0.6 which requires Spring Boot 4.x (Jakarta EE 11).
         Spring Boot 3.x is bound to Spring Framework 6.x (Jakarta EE 10).
