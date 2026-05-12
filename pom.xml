@@ -31,7 +31,7 @@
         <lombok.version>1.18.30</lombok.version>
 		<okhttp3.version>4.12.0</okhttp3.version>
 		<tomcat.version>10.1.54</tomcat.version>
-		<netty.version>4.1.132.Final</netty.version>
+		<netty.version>4.1.133.Final</netty.version>
 		<spring-framework.version>6.2.11</spring-framework.version>
 		<logback.version>1.5.25</logback.version>
 		<reactor-netty.version>1.2.8</reactor-netty.version>
@@ -57,12 +57,6 @@
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
 				<version>2.21.1</version>
-			</dependency>
-			<!-- Override netty-transport-native-epoll to fix CVE-2026-42577 -->
-			<dependency>
-				<groupId>io.netty</groupId>
-				<artifactId>netty-transport-native-epoll</artifactId>
-				<version>4.2.13.Final</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
