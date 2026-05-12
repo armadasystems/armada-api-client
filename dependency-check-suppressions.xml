@@ -35,5 +35,19 @@
         <cve>CVE-2026-22735</cve>
     </suppress>
 
+    <!--
+        CVE-2026-42584 (HIGH) - tomcat-embed-core: unsafe reuse of socket after HTTP parsing failure.
+        10.1.54 is the latest available 10.1.x in Maven Central and does not fix this CVE.
+        The 9.0.x branch fix is 9.0.117; no patched 10.1.x version is published yet.
+        Accepted risk: upgrade as soon as a patched 10.1.x is released.
+        Review: check for tomcat-embed-core 10.1.55+ in Maven Central.
+    -->
+    <suppress>
+        <notes>CVE-2026-42584 HIGH. Unsafe socket reuse after HTTP parsing failure.
+        No patched 10.1.x available in Maven Central (latest is 10.1.54).
+        9.0.117 is the 9.0.x fix. Accepted risk pending 10.1.55+ release.</notes>
+        <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-core@.*$</packageUrl>
+        <cve>CVE-2026-42584</cve>
+    </suppress>
 
 </suppressions>
