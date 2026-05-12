@@ -36,6 +36,21 @@
     </suppress>
 
     <!--
+        CVE-2026-42587 (HIGH) - io.netty:netty-codec: ZstdDecoder maxAllocation bypass —
+        total output across all buffers not bounded, only per-buffer size.
+        4.1.132.Final is the latest available Netty in Maven Central; no patched version published yet.
+        Accepted risk: upgrade as soon as 4.1.133.Final+ is released.
+        Review: check for io.netty:netty-codec 4.1.133.Final+ in Maven Central.
+    -->
+    <suppress>
+        <notes>CVE-2026-42587 HIGH. ZstdDecoder maxAllocation unbounded across buffers.
+        4.1.132.Final is the latest available Netty; no fix published yet.
+        Accepted risk pending 4.1.133.Final+ release.</notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-codec@.*$</packageUrl>
+        <cve>CVE-2026-42587</cve>
+    </suppress>
+
+    <!--
         CVE-2026-42584 (HIGH) - tomcat-embed-core: unsafe reuse of socket after HTTP parsing failure.
         10.1.54 is the latest available 10.1.x in Maven Central and does not fix this CVE.
         The 9.0.x branch fix is 9.0.117; no patched 10.1.x version is published yet.
