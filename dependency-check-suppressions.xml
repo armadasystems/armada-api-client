@@ -36,16 +36,18 @@
     </suppress>
 
     <!--
-        CVE-2026-40973 (MEDIUM) - spring-boot: predictable temp directory / ApplicationTemp ownership.
-        Fixed in 3.4.16, 3.5.14, 4.0.6. Latest available 3.4.x in Maven Central is 3.4.13 (still affected).
-        Project upgraded to 3.4.13 (latest available). Accepted risk pending 3.4.16 release.
-        Review: upgrade spring-boot-starter-parent to 3.4.16+ when published.
+        CVE-2026-42577 (HIGH) - io.netty:netty-transport-native-epoll 4.1.133.Final
+        Fix requires 4.2.13.Final. Upgrading only the native classifier artifact to 4.2.x
+        while Netty core remains at 4.1.x risks a JNI ABI mismatch at runtime on Linux.
+        A full Netty 4.2.x migration (tied to a reactor-netty compatibility upgrade) is needed.
+        Accepted risk pending a reactor-netty release that supports Netty 4.2.x.
     -->
     <suppress>
-        <notes>CVE-2026-40973 MEDIUM. Predictable temp directory ownership. Fix requires 3.4.16+;
-        latest available 3.4.x is 3.4.13. Accepted risk pending release.</notes>
-        <packageUrl regex="true">^pkg:maven/org\.springframework\.boot/spring\-boot@.*$</packageUrl>
-        <cve>CVE-2026-40973</cve>
+        <notes>CVE-2026-42577 HIGH. Fix requires netty 4.2.13.Final; no 4.1.x backport available.
+        Upgrading only the native epoll artifact risks ABI mismatch with Netty 4.1.x core.
+        Accepted risk pending full Netty 4.2.x / reactor-netty migration.</notes>
+        <packageUrl regex="true">^pkg:maven/io\.netty/netty\-transport\-native\-epoll@.*$</packageUrl>
+        <cve>CVE-2026-42577</cve>
     </suppress>
 
     <!--
