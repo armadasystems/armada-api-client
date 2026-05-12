@@ -33,7 +33,7 @@ replay_pid*
 
 # Environment
 .env
-.env.*
+.env.armada
 .env.local
 .env.*.local
 
