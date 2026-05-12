@@ -35,19 +35,5 @@
         <cve>CVE-2026-22735</cve>
     </suppress>
 
-    <!--
-        CVE-2026-34487 (HIGH) - tomcat-embed-core
-        Reported against 10.1.47. Project was upgraded to 10.1.54 (commit fda6c39) which is expected
-        to contain the equivalent 10.1.x fix (9.0.117 is the corresponding 9.0.x branch fix).
-        Suppress pending official confirmation of the 10.1.x fix version.
-        Review: verify when Tomcat publishes the CVE advisory for the 10.1.x branch.
-    -->
-    <suppress>
-        <notes>CVE-2026-34487 HIGH. Reported against 10.1.47; project is at 10.1.54.
-        9.0.117 is the 9.0.x branch fix; 10.1.54 is expected to contain the equivalent fix.
-        Suppress pending official 10.1.x advisory confirmation.</notes>
-        <packageUrl regex="true">^pkg:maven/org\.apache\.tomcat\.embed/tomcat\-embed\-core@.*$</packageUrl>
-        <cve>CVE-2026-34487</cve>
-    </suppress>
 
 </suppressions>
