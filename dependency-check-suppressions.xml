@@ -36,6 +36,19 @@
     </suppress>
 
     <!--
+        CVE-2026-40973 (MEDIUM) - spring-boot: predictable temp directory / ApplicationTemp ownership.
+        Fixed in 3.4.16, 3.5.14, 4.0.6. Latest available 3.4.x in Maven Central is 3.4.13 (still affected).
+        Project upgraded to 3.4.13 (latest available). Accepted risk pending 3.4.16 release.
+        Review: upgrade spring-boot-starter-parent to 3.4.16+ when published.
+    -->
+    <suppress>
+        <notes>CVE-2026-40973 MEDIUM. Predictable temp directory ownership. Fix requires 3.4.16+;
+        latest available 3.4.x is 3.4.13. Accepted risk pending release.</notes>
+        <packageUrl regex="true">^pkg:maven/org\.springframework\.boot/spring\-boot@.*$</packageUrl>
+        <cve>CVE-2026-40973</cve>
+    </suppress>
+
+    <!--
         CVE-2026-42584 (HIGH) - tomcat-embed-core: unsafe reuse of socket after HTTP parsing failure.
         10.1.54 is the latest available 10.1.x in Maven Central and does not fix this CVE.
         The 9.0.x branch fix is 9.0.117; no patched 10.1.x version is published yet.
