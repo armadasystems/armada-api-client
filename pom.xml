@@ -30,7 +30,7 @@
 		<java.version>17</java.version>
         <lombok.version>1.18.30</lombok.version>
 		<okhttp3.version>4.12.0</okhttp3.version>
-		<tomcat.version>10.1.54</tomcat.version>
+		<tomcat.version>10.1.55</tomcat.version>
 		<netty.version>4.1.133.Final</netty.version>
 		<spring-framework.version>6.2.18</spring-framework.version>
 		<logback.version>1.5.25</logback.version>
