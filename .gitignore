@@ -47,4 +47,7 @@ Desktop.ini
 *~
 .cache/
 tmp/
-temp/.claude/
+temp/
+
+# Claude Code local settings (may contain secrets)
+.claude/
