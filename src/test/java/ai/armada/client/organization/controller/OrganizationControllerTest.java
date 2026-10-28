@@ -3,10 +3,10 @@ package ai.armada.client.organization.controller;
 import ai.armada.client.organization.dto.OrganizationDto;
 import ai.armada.client.organization.exception.OrganizationApiException;
 import ai.armada.client.organization.service.OrganizationService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 

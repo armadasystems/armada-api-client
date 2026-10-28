@@ -3,10 +3,10 @@ package ai.armada.client.serviceline.controller;
 import ai.armada.client.serviceline.dto.*;
 import ai.armada.client.serviceline.exception.ServiceLineApiException;
 import ai.armada.client.serviceline.service.ServiceLineService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
