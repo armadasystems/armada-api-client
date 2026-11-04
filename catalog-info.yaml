@@ -1,0 +1,35 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: armada-api-client
+  description: Spring Boot application that calls the Armada API using automatically
+    refreshed OAuth tokens and exposes REST endpoints for organizations, service lines
+    and data pools.
+  tags:
+    - java
+    - spring-boot
+    - spring-webflux
+    - rest-api
+    - maven
+    - oauth
+  annotations:
+    github.com/project-slug: armadasystems/armada-api-client
+    backstage.io/techdocs-ref: ''
+    backstage.io/kubernetes-label-selector: ''
+    backstage.io/kubernetes-namespace: ''
+    armada.ai/ase-id: e3713c9d-80e6-4260-9f6a-02ee6d4870f9
+    armada.ai/ase-name: Armada-api
+    armada.ai/infra-folder: ''
+    armada.ai/infra-service-name: ''
+  links:
+    - url: https://example.com
+      title: Application URL
+    - url: https://example.com
+      title: Service URL
+    - url: https://example.com
+      title: Runbook
+spec:
+  type: service
+  lifecycle: production
+  owner: madhu.yaduguri@armada.ai
+  system: atlas
