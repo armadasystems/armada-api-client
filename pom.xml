@@ -162,4 +162,15 @@
 		</plugins>
 	</build>
 
+	<dependencyManagement>
+		<dependencies>
+			<!-- BEGIN remediation-service managed dependencies -->
+			<dependency>
+			    <groupId>tools.jackson.core</groupId>
+			    <artifactId>jackson-databind</artifactId>
+			    <version>3.1.8</version>
+			</dependency>
+			<!-- END remediation-service managed dependencies -->
+		</dependencies>
+	</dependencyManagement>
 </project>
